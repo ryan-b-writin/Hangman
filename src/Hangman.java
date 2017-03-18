@@ -5,13 +5,9 @@ public class Hangman {
 		// TODO Auto-generated method stub
 		Game game = new Game("testing");
 		Prompter prompter = new Prompter(game);
-		prompter.displayProgress();
-		boolean isHit = prompter.promptForGuess();
-		if (isHit) {
-			System.out.println("Hit!");
-		} else {
-			System.out.println("Miss!");
+		while (game.getRemainingTries() > 0){
+			prompter.displayProgress();
+			prompter.promptForGuess();
 		}
-		prompter.displayProgress();
 	}
 }
