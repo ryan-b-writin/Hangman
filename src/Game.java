@@ -12,6 +12,10 @@ public class Game {
 	}
 	
 	public boolean applyGuess(char guess){
+		if (misses.indexOf(guess) != -1 || hits.indexOf(guess) != -1)
+		{
+			throw new IllegalArgumentException(guess + " has already been guessed");
+		}
 		boolean isHit = answer.indexOf(guess) != -1;
 		if (isHit){
 			hits += guess;
