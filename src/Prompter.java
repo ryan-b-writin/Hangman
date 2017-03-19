@@ -28,4 +28,12 @@ public class Prompter {
 	public void displayProgress() {
 		System.out.printf("You have %d tries left. Solve: %s%n", game.getRemainingTries(), game.getCurrentProgress());
 	}
+	
+	public void displayOutcome() {
+		if (game.isWon()){
+			System.out.printf("hooray!, the answer was: %s", game.answer);
+		} else {
+			System.out.printf("Sorry. The answer was: %s", game.answer );
+		}
+	}
 }

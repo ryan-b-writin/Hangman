@@ -1,7 +1,7 @@
 
 public class Game {
 	public static final int MAX_MISSES = 7;
-	private String answer;
+	public String answer;
 	private String hits;
 	private String misses;
 	
@@ -55,5 +55,9 @@ public class Game {
 			progress += display;
 		}
 		return progress;
+	}
+	
+	public boolean isWon() {
+		return getCurrentProgress().indexOf('-') == -1;
 	}
 }
