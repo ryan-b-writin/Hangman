@@ -23,6 +23,13 @@ public class Game {
 		return letter;
 	}
 	
+	public boolean applyGuess(String letters) {
+		if(letters.length() == 0) {
+			throw new IllegalArgumentException("No input found.");
+		}
+		return applyGuess(letters.charAt(0));
+	}
+	
 	public boolean applyGuess(char guess){
 		guess = normalizeGuess(guess);
 		boolean isHit = answer.indexOf(guess) != -1;
