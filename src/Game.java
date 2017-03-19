@@ -6,16 +6,25 @@ public class Game {
 	private String misses;
 	
 	public Game(String answer) {
-		this.answer = answer;
+		this.answer = answer.toLowerCase();
 		this.hits ="";
 		this.misses ="";
 	}
 	
-	public boolean applyGuess(char guess){
-		if (misses.indexOf(guess) != -1 || hits.indexOf(guess) != -1)
-		{
-			throw new IllegalArgumentException(guess + " has already been guessed");
+	private char normalizeGuess(char letter){
+		if (!Character.isLetter(letter)){
+			throw new IllegalArgumentException("letters only!");
 		}
+		letter = Character.toLowerCase(letter);
+		if (misses.indexOf(letter) != -1 || hits.indexOf(letter) != -1)
+		{
+			throw new IllegalArgumentException(letter + " has already been guessed");
+		}
+		return letter;
+	}
+	
+	public boolean applyGuess(char guess){
+		guess = normalizeGuess(guess);
 		boolean isHit = answer.indexOf(guess) != -1;
 		if (isHit){
 			hits += guess;
